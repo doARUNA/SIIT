@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>
+        Javascript
+    </title>
+  <script>
+         /*1.O functie care primeste un sir de caractere si returneaza cifrele din sirul respectiv*/
+   function numberInStr (str) {
+     var arr=[];
+     for (i=0;i<str.length;i++){
+       if (parseInt(str[i])){
+      arr= arr + parseInt(str[i]);
+     };
+    }
+     return arr;
+   }
+   console.log (numberInStr("42px34aha32"));
+        /*2.O functie care primeste un sir de caractere si returneaza doar literele din sirul respectiv*/
+  function letterInStr(str){
+    var arr=[];
+    for(i=0;i<str.length;i++){
+      if (!parseInt(str[i])){
+        arr= arr+str[i];
+      }
+    }
+    return arr;
+  }
+  console.log(letterInStr("42px34aha32"));
+    /*3.O functie care primeste un sir de caractere si returneaza primele 5 litere(daca exista)*/
+
+  function fiveLettersInStr(str){
+    var letters = [];
+    var ans=[];
+    for (i=0;i<str.length;i++){
+      if(!parseInt(str[i])){
+        letters=letters+ str[i];
+      }
+    }
+    for (var c=0; c<5;c++){
+      ans=ans+letters[c];
+    }
+    return ans;
+  }
+  console.log(fiveLettersInStr("23eft54g53daba4e"));
+      /*4.O functie care primeste o lista de siruri de caractere si returneaza sirurile concatenate*/
+      function concatenateStrings (arr){
+     var resultStr="";
+      for(var i=0; i<arr.length;i++)
+      resultStr= resultStr+ arr[i];
+      return resultStr;
+     }
+   console.log(concatenateStrings(["3", "Orange", "a", "Mango", "acd"]));
+       /*5.O functie care primeste o lista de siruri de caractere si returneaza cifrele din toate sirurile*/
+       function digitsFromList (arr){
+      var list = arr.join();
+      var resultStr="";
+      for (var i=0; i<list.length;i++){
+        if(parseInt(list[i])){
+          resultStr= resultStr+list[i];
+        }
+      }
+      return resultStr;
+    }
+    console.log(digitsFromList(["3","Ana","345","Mese"]));
+         /*6.O functie care primeste o lista de siruri de caractere si returneaza lista de siruri de caractere inversate*/
+         function inverse (arr){
+      var inv = arr.join();
+      var result=[];
+      for (var i=inv.length-1;i>0;i--){
+        result= result + inv[i];
+      }
+      return result;
+    }
+    
+     console.log(inverse(["345","Ana","123","Mere"]));
+         /*7.Calculeaza factorialul unui numar*/
+    function factorial (N){
+      var p=1;
+      for(i=1;i<=N;i++){
+        p=p*i;
+      }
+      return p;
+    }
+
+    console.log(factorial(5));
+        /*8.Calculeaza cel mai mare divizor comun al 2 numere*/
+function greatestDivisor(a,b){
+  var result=0;
+  if (a<=b){
+    var min = a;
+  } else {
+    var min = b;
+  }
+  for (var i=1; i<=min;i++){
+    if (a%i === 0 && b%i === 0){
+      result = i;
+    }
+  ;}
+return result;
+  }
+console.log(greatestDivisor(45,72));
+ /*9.Calculeaza cel mai mic multiplu comun al 2 numere*/
+
+     function leastMultiple(a,b){
+ var gcd = greatestDivisor(a,b);
+ var lcm= a*b/gcd;
+ return lcm;
+  }
+console.log(leastMultiple(20,15));
+  /*10.Returneaza un array care sa contina toti divizorii unui numar (ex pentru 64: trebuie sa returneze [2,4,8,16,32])*/
+   
+  function arrOfDiv (n){
+    var result=[];
+    var j=0;
+    for (i=1;i<=n;i++){
+      if(n%i === 0){
+        result[j]=i;
+        j=j+1;
+      }
+    }
+    return result;
+  }
+
+  console.log(arrOfDiv(45));
+    /*11.O functie care verifica daca un numar este palindrom (ex: 121, 1234321)*/
+   
+function nIsPalindrome (N){
+  var result = 0;
+  var x = N;
+  while (N !== 0){
+    result = result*10 + N%10;
+    N=(N-(N%10))/10;
+  }
+  if(result===x){
+    return x + " este palindrom";
+  }else {
+    return x+ " nu este palindrom";
+  }
+}
+console.log(nIsPalindrome(1234321));
+     /*12.O functie care sorteaza numerele pare dintr-un sir de numere primit ca parametru.*/
+   
+     function evenSort (arr){
+  var evenArr=[];
+  for (i=0;i<arr.length;i++){
+    if(arr[i]%2===0){
+      evenArr=evenArr+arr[i];
+    }
+  }
+  return evenArr;
+}
+console.log(evenSort([1,2,3,4,5,5,6,7,8,9]));
+  </script>
+</head>
+<body>
+</body>
+</html>
