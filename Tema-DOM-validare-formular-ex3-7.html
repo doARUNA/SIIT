@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Validare formular
+    </title>
+    <style>
+    .alert{
+      color:red;
+    }
+    </style>
+<script>
+function maximShow(formular,event){
+  event.preventDefault ();
+  var firstNumber = formular.querySelector("[name='num1'");
+  var first=parseInt(firstNumber.value);
+  var secondNumber = formular.querySelector("[name='num2'");
+  var second=parseInt(secondNumber.value);
+  if (first > second){
+    var result = first;
+  } else {
+    if (second >first){
+      var result = second;
+    } else {
+      if (first === second){
+        result = first;
+      }
+    }
+  }
+  formular.querySelector("[name='maxim']").value = result;
+  document.getElementById("res").innerHTML = result;
+}
+function sum(formular,event){
+  event.preventDefault ();
+  var firstNumber = formular.querySelector("[name='num1'");
+  var first=parseInt(firstNumber.value);
+  var secondNumber = formular.querySelector("[name='num2'");
+  var second=parseInt(secondNumber.value);
+  var result = first+second;
+  formular.querySelector("[name='suma']").value = result;
+  document.getElementById("res").innerHTML = result;
+}
+function arrayLength(form,event){
+  var arrInput = form.querySelector("[name='array']");
+  var arr= arrInput.value;
+  var c =1;
+  for( var i=0; i<arr.length;i++){
+    c=c+1;
+  }
+  form.querySelector("[name='length']").innerHTML = c + " caractere au fost scrise";
+}
+function arrayLengthLimit(form,event){
+  arrayLength(form,event) ;
+  var arr= form.querySelector("[name='array']").value;
+  if (arr.length>=9){
+    form.querySelector("#limitAlert").classList.add("alert");
+    event.preventDefault();
+  }
+  }
+
+  function numbersOnly(form,event){
+    var arr = form.querySelector("[name='numbers']").value;
+    var c = event.key;
+    if (!parseInt(c)){
+      event.preventDefault ();
+    }
+
+  }
+
+</script>
+</head>
+<body >
+ <form onsubmit="maximShow(this,event)">
+   <fieldset>
+     <legend>Exercitiu 3</legend>
+      <label>Text 1:<input type="text"  name="num1"></label><br>
+      <label>Text 2:<input type="text" name="num2"></label><Br>
+      <label>Maxim:<input type="text" name="maxim" id="res"></label><Br>
+      <input type="submit" value="Afiseaza maxim">
+   </fieldset>
+ </form> 
+ <form onsubmit="sum(this,event)">
+  <fieldset>
+    <legend>Exercitiu 4</legend>
+     <label>Text 1:<input type="text"  name="num1"></label><br>
+     <label>Text 2:<input type="text" name="num2"></label><Br>
+     <label>Maxim:<input type="text" name="suma" id="res"></label><Br>
+     <input type="submit" value="Afiseaza suma">
+  </fieldset>
+</form> 
+<form oninput="arrayLength(this,event)">
+  <fieldset>
+    <legend>Exercitiu 5</legend>
+     <label>Text :<input type="text"  name="array" ></label><br>
+     <div name="length" style="text-align:right;"></div>
+  </fieldset>
+</form>
+ 
+ <form onkeypress="arrayLengthLimit(this,event)">
+  <fieldset>
+    <legend>Exercitiu 6</legend>
+     <label>Text :<input type="text"  name="array" ></label><br>
+     <div name="length" style="text-align:right;" id="limitAlert" ></div>
+  </fieldset>
+</form>
+
+<form onkeypress="numbersOnly(this,event)">
+  <fieldset>
+    <legend>Exercitiu 7</legend>
+     <label>Text :<input type="text"  name="numbers" ></label><br>
+     
+  </fieldset>
+</form>
+ 
+</body>
+</html>
+

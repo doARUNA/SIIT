@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Validare formular
+    </title>
+    <style>
+     input[type="text"].equal {
+      background-color:green;
+      color:white;
+     }
+     input[type="text"].max {
+      background-color:blue;
+      color:white;
+     }
+    </style>
+<script>
+function equalCheck(formular,event){
+  event.preventDefault();
+  var firstInput = formular.querySelector("[name='text1']");
+  var first = firstInput.value;
+  var secondInput= formular.querySelector("[name='text2']");
+  var second = secondInput.value;
+  if (first===second){
+    formular.querySelector("[name='text1']").classList.add("equal");
+    formular.querySelector("[name='text2']").classList.add("equal");
+  }else {
+    formular.querySelector("[name='text1']").classList.remove("equal");
+    formular.querySelector("[name='text2']").classList.remove("equal");
+  }
+}
+function maximumCheck(formular,event){
+  event.preventDefault();
+  var firstInput = formular.querySelector("[name='text2.1']");
+  var first = firstInput.value;
+  var secondInput = formular.querySelector("[name='text2.2']");
+  var second = secondInput.value;
+  if (first > second){
+    firstInput.classList.add('max');
+    secondInput.classList.remove('max');
+  }else {
+    if (second> first){
+    secondInput.classList.add('max');
+    firstInput.classList.remove('max');
+    } else {
+      firstInput.classList.remove('max');
+      secondInput.classList.remove('max');
+    }
+  }
+  if (first === second){
+    firstInput.classList.add('max');
+    secondInput.classList.add('max');
+  }
+}
+
+</script>
+</head>
+<body >
+ <form onsubmit="equalCheck(this,event)">
+   <fieldset>
+     <legend>Exercitiu 1</legend>
+      <label>Text 1:<input type="text"  name="text1"></label><br>
+      <label>Text 2:<input type="text" name="text2"></label><Br>
+      <input type="submit" value="Verifica daca sunt egale">
+   </fieldset>
+ </form> 
+ <form onsubmit="maximumCheck(this,event)">
+  <fieldset>
+    <legend>Exercitiu 2</legend>
+     <label>Valoare 1:<input type="text"  name="text2.1"></label><br>
+     <label>Valoare 2:<input type="text" name="text2.2"></label><Br>
+     <input type="submit" value="Verifica maxim">
+  </fieldset>
+
+
+</body>
+</html>
+
