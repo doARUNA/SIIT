@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lista Clienti</title>
+		<style>
+            body{
+                background-color:#fef8e1;
+            }
+			#add-contact #submit{
+                color:white;
+                background:blue;
+                padding:5px;
+                margin:10px;
+            }
+            .hidden{
+                display:none;
+            }
+            #table-view input.del{
+				background-color:red;
+				color:white;
+			}
+			#table input.edit{
+				background-color:blue;
+				color:white;
+			}
+            .agenda{
+                text-align:center;
+                padding:20px 150px;
+            }
+            #tabel, #add-contact{
+                background-color:#feca27;
+               position:relative;
+                width:100%;
+                border-collapse:collapse;
+                border-radius:25px;
+				padding-top:20px;
+				padding-bottom:20px;
+				margin:20px;
+            }
+			td,th {padding:20px;}
+		</style>
+		<script>
+            var lista=[
+			
+			];
+            var idxEditare = -1;
+           function draw(){
+				var str = "";
+				for(var i=0;i<lista.length;i++){
+					str+=`<tr>
+						<td>${lista[i].nume}</td>
+						<td>${lista[i].telefon}</td>
+                        <td>
+							<a href="#" onclick="editeaza(${i});">Modifica</a>
+							
+						</td>
+						<td>
+							<a href="#" onclick="sterge(${i});">Sterge</a>
+						</td>
+					</tr>`;
+				}
+				document.querySelector("#tabel tbody").innerHTML = str;
+           }
+           function sterge(ind){
+				if(confirm(`Esti sigur ca vrei sa stergi contactul ${lista[ind].nume} ?`)){
+					lista.splice(ind,1);
+					draw();
+				}
+			}
+            function editeaza(idx){
+				window.idxEditare = idx;
+				var obj = lista[idx];
+				var form = document.querySelector("#add-contact");
+				form.querySelector("[name='nume']").value = obj.nume;
+				form.querySelector("[name='telefon']").value = obj.telefon;
+			}
+		function adauga(form,event){
+            event.preventDefault();
+            var obj = {
+				};
+            obj.nume = form.querySelector("[name='nume']").value;
+            obj.telefon = form.querySelector("[name='telefon']").value;
+
+            if (idxEditare ===-1){
+                lista.push(obj); 
+            }  else {
+                lista[idxEditare]=obj;
+                idxEditare=-1;
+            } 
+            draw();
+            document.querySelector("#tabel").classList.remove("hidden");
+            document.querySelector("#add-contact").reset();
+        }
+
+			
+		</script>
+	</head>
+	<body>
+        <div class="agenda">
+            <h2>Agenda</h2>
+		<form id="add-contact" onsubmit="adauga(this,event);" >
+
+				<label for="nume">Nume: </label><input id="nume" type="text" name="nume"/>
+				<label>Numar telefon: <input type="tel" name="telefon"/></label> <br />		
+				<input type="submit" value="Adauga contact" id="submit"/>
+
+		</form>
+        <table id="tabel" class="hidden">
+				<thead>
+					<tr>
+						<th>Nume</th>
+						<th>Telefon</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+	</div>
+	</body>
+</html>
