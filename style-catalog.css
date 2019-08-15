@@ -1,0 +1,33 @@
+body{
+    display: flex;
+    position: relative;
+    overflow-x:hidden;
+}
+#elev, #tableElevi, #nota, #tableNote {border:1px solid black;
+width:-webkit-fill-available;
+margin:0.5rem;
+}
+#tableNote>thead,#tableNote>tbody{text-align:center;}
+ 
+#lista_elevi_wrapper{
+    background-color:lightgreen;
+    width:100%;
+}
+.lista_elevi_comprised{
+    width: 100%;
+    position: relative;
+    display: grid;
+}
+#note_elev_wrapper{
+    background-color:lightblue;
+}
+.hidden{
+    visibility:hidden;
+    width:0;
+}
+.note_elevi_comprised{
+    width:100%;
+    position: relative;
+    display: grid;
+}
+thead {text-align:left;}
